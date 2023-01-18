@@ -9,56 +9,47 @@ const contactsSlice = createSlice({
     error: null,
   },
   extraReducers: {
-    [fetchContacts.pending](state, action) {
-      return { ...state, isLoading: true };
+    [fetchContacts.pending](state) {
+      state.isLoading = true;
     },
     [fetchContacts.fulfilled](state, action) {
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-        isLoading: false,
-        error: null,
-      };
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
     },
     [fetchContacts.rejected](state, action) {
-      return { ...state, isLoading: false, error: action.payload };
+      state.isLoading = false;
+      state.error = action.payload;
     },
+
     [addContact.pending](state) {
-      return { ...state, isLoading: true };
+      state.isLoading = true;
     },
     [addContact.fulfilled](state, action) {
-      return {
-        ...state,
-        isLoading: false,
-        error: null,
-        items: [...state.items, action.payload],
-      };
+      state.isLoading = false;
+      state.error = null;
+      state.items = [...state.items, action.payload];
     },
     [addContact.rejected](state, action) {
-      return { ...state, isLoading: false, error: action.payload };
+      state.isLoading = false;
+      state.error = action.payload;
     },
+
     [deleteContact.pending](state) {
-      return { ...state, isLoading: true };
+      state.isLoading = true;
     },
     [deleteContact.fulfilled](state, action) {
-      return {
-        ...state,
-        items: [
-          ...state.items.filter(
-            ({ name }) =>
-              name.toLowerCase() !== action.payload.name.trim().toLowerCase()
-          ),
-        ],
-        isLoading: false,
-        error: null,
-      };
+      state.isLoading = false;
+      state.error = null;
+      state.items = state.items.filter(
+        contact => contact.id !== action.payload.id
+      );
     },
     [deleteContact.rejected](state, action) {
-      return { ...state, isLoading: false, error: action.payload };
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });
 
-export const { fetchingInProgress, fetchingSuccess, fetchingError } =
-  contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

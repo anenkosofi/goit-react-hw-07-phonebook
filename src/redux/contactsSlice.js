@@ -13,7 +13,12 @@ const contactsSlice = createSlice({
       return { ...state, isLoading: true };
     },
     [fetchContacts.fulfilled](state, action) {
-      return { ...state, items: action.payload, isLoading: false, error: null };
+      return {
+        ...state,
+        items: [...action.payload],
+        isLoading: false,
+        error: null,
+      };
     },
     [fetchContacts.rejected](state, action) {
       return { ...state, isLoading: false, error: action.payload };

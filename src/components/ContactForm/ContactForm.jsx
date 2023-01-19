@@ -33,6 +33,7 @@ export function ContactForm() {
       )
     ) {
       alert(`${newContact.name} is already in your contacts.`);
+      resetForm();
       return;
     }
     dispatch(addContact(newContact));

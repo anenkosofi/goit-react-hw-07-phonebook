@@ -41,26 +41,38 @@ const ContactWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 8px 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  font-size: 14px;
+  min-width: 100px;
+  height: 40px;
+
+  font-size: 16px;
   letter-spacing: 1px;
 
   color: #010101;
   background-color: #ededed;
 
   border: 1px solid rgb(200, 200, 200);
-  border-radius: 50px;
+  border-radius: 10px;
 
   cursor: pointer;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    color: #eb3349;
-    border-color: #eb3349;
+    color: #fefefe;
+    background-color: #e1503d;
+    border-color: #e1503d;
+  }
+
+  &:disabled {
+    background-color: #e2e2e2;
+    color: #636363;
   }
 `;
 

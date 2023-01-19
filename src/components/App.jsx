@@ -1,11 +1,12 @@
+import { useSelector } from 'react-redux';
+import { selectError, selectIsLoading } from 'redux/selectors';
 import { GlobalStyle } from './GlobalStyle';
 import { Box } from './Box.styled';
 import { ContactForm } from './ContactForm';
 import { Filter } from './Filter';
+import { Loader } from './Loader';
 import { ContactList } from './ContactList';
 import { PhonebookBox, ContactBox } from './App.styled';
-import { useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
 
 export function App() {
   const isLoading = useSelector(selectIsLoading);
@@ -21,7 +22,7 @@ export function App() {
       <ContactBox>
         <h2>Contacts</h2>
         <Filter />
-        {isLoading && !error && <b>Request in progress...</b>}
+        {isLoading && !error && <Loader />}
         <ContactList />
       </ContactBox>
     </Box>

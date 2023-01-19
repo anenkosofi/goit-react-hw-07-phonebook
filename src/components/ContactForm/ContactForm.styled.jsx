@@ -10,7 +10,7 @@ const FormForAddingContacts = styled(Form)`
 
   background-color: #fefefe;
 
-  box-shadow: 0px 12px 16px -4px rgba(50, 88, 130, 0.32);
+  box-shadow: 0px 8px 12px -4px rgba(50, 88, 130, 0.32);
   border-radius: 15px;
 `;
 const FormControl = styled.div`
@@ -81,11 +81,14 @@ const Error = styled(ErrorMessage)`
 `;
 
 const Button = styled.button`
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
-  padding: 14px 26px;
+  min-width: 150px;
+  height: 50px;
 
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 1px;
   text-align: center;
 
@@ -93,39 +96,24 @@ const Button = styled.button`
   background-color: #ededed;
 
   border: 1px solid rgb(200, 200, 200);
-  border-radius: 50px;
+  border-radius: 10px;
 
   cursor: pointer;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  z-index: 1;
-  overflow: hidden;
-
-  &:before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1d976c;
-    transform: scaleX(0);
-    z-index: -1;
-
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
 
   &:hover,
   &:focus {
     color: #fefefe;
+    background-color: #1d976c;
     border-color: #1d976c;
   }
 
-  &:hover:before,
-  &:focus:before {
-    transform: scaleX(1);
+  &:disabled {
+    background-color: #e2e2e2;
+    color: #636363;
   }
 `;
 

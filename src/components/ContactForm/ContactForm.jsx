@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -10,11 +10,10 @@ import {
   Error,
   Button,
 } from './ContactForm.styled';
-import { selectIsLoading } from 'redux/selectors';
 
 export function ContactForm() {
-  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+
   const initialValues = {
     name: '',
     number: '',
@@ -73,9 +72,7 @@ export function ContactForm() {
           <Label htmlFor="number">Number</Label>
           <Error component="div" name="number" />
         </FormControl>
-        <Button type="submit" disabled={isLoading}>
-          Add contact
-        </Button>
+        <Button type="submit">Add contact</Button>
       </FormForAddingContacts>
     </Formik>
   );
